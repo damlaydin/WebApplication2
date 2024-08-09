@@ -1,0 +1,27 @@
+﻿@model IEnumerable<WebApplication2.Models.User>
+
+@{
+    ViewData["Title"] = "Users";
+}
+
+<h2>Users</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>UserName</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.UserName</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@user.Id">View Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,41 @@
+﻿@model WebApplication2.Models.UserDetailViewModel
+
+@{
+    ViewData["Title"] = "User Details";
+}
+
+@using WebApplication2.Reports
+
+<link rel="stylesheet" href="~/css/viewer.part.bundle.css" />
+<script src="~/js/viewer.part.bundle.js"></script>
+
+
+<h2>User Details</h2>
+
+<div>
+    <h4>User Info</h4>
+    <div>
+        <dl class="dl-horizontal">
+            <dt>UserName</dt>
+            <dd>@Model.User.UserName</dd>
+            <dt>FullName</dt>
+            <dd>@Model.UserInfo?.FullName</dd>
+            <dt>Email</dt>
+            <dd>@Model.UserInfo?.Email</dd>
+            <dt>Address</dt>
+            <dd>@Model.UserInfo?.Address</dd>
+        </dl>
+    </div>
+</div>
+
+<div>
+    <h4>Report</h4>
+    @if (Model.Report != null)
+    {
+        @Html.DevExpress().WebDocumentViewer("DocumentViewer").Height("1000px").Bind(Model.Report)
+    }
+    else
+    {
+        <p>No report available for this user.</p>
+    }
+</div>

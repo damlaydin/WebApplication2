@@ -1,0 +1,41 @@
+﻿@model WebApplication2.Models.ReportViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@using WebApplication2.Reports
+
+<link rel="stylesheet" href="~/css/viewer.part.bundle.css" />
+<script src="~/js/viewer.part.bundle.js"></script>
+
+<div>
+    <h2>Save Report</h2>
+    <form asp-action="SaveReport" method="post">
+        <div>
+            <label asp-for="ReportName"></label>
+            <input asp-for="ReportName" name="reportName" />
+        </div>
+        <div>
+            <label asp-for="UserName"></label>
+            <input asp-for="UserName" name="userName" />
+        </div>
+        <button type="submit">Save Report</button>
+    </form>
+</div>
+
+<div>
+    <h2>Load Report</h2>
+    <form asp-action="LoadReport" method="get">
+        <div>
+            <label asp-for="UserName"></label>
+            <input asp-for="UserName" name="userName" />
+        </div>
+        <button type="submit">Load Report</button>
+    </form>
+</div>
+
+<div>
+    <h2>Document Viewer</h2>
+@Html.DevExpress().WebDocumentViewer("DocumentViewer").Height("1000px").Bind(new TestReport())
+</div>
